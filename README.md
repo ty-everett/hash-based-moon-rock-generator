@@ -1,38 +1,83 @@
 # Hash-Based Moon Rock Shape Generator
 
-A frontend-only BSV BRC-102 project using React + Vite under `frontend/`.
+A deterministic, browser-only moon-rock generator built as a BRC-102 frontend project.
 
-## Layout
+## Live Site
 
-- `deployment-info.json` at project root for BRC-102 tooling.
-- `frontend/` contains the app source and package.
-- `frontend/src/App.jsx` has the deterministic moon-rock renderer.
-- `frontend/src/main.jsx` boots the app.
-- `frontend/src/styles.css` styles the UI.
+- Production URL: <http://frontend.a268b0290a244086fb72c1ad16d148e9.projects.babbage.systems/>
 
-## Tooling scripts
+![Hash-based moon rock sample](assets/moon1.png)
 
-- `npm run install:tooling` installs project CLI tooling (`@bsv/lars`, `@bsv/cars-cli`).
-- `npm run install:frontend` installs frontend dependencies.
-- `npm run dev` runs the frontend.
-- `npm run build` builds the frontend.
-- `npm run preview` previews the frontend build.
-- `npm run lars` launches LARS for this project.
-- `npm run cars` runs CARS CLI commands.
+## What it does
 
-## BRC-102 deployment-info
+- Enter any text seed and generate a **stable** moon-rock specimen.
+- SHA-256 of the input is used as the seed input.
+- A seeded pseudo-random pipeline generates:
+  - rock silhouette and contour
+  - crater density/placement
+  - fracture behavior and striation patterns
+  - shadowing, occlusion, and reflective grain
+- Rendering is performed entirely in the browser with Canvas.
+- Same text always resolves to the exact same rock.
+
+## Repository structure
+
+- `frontend/`
+  - Vite + React application
+  - `frontend/src/App.jsx` contains deterministic render logic
+  - `frontend/src/styles.css` visual system
+- `deployment-info.json`
+  - BRC-102 metadata for LARS/CARS workflows
+- `assets/moon1.png`
+  - Featured sample image used in docs
+
+## Run locally
+
+```bash
+npm run install:tooling
+npm run install:frontend
+npm run dev
+```
+
+Then open the local dev URL.
+
+## Build & preview
+
+```bash
+npm run build
+npm run preview
+```
+
+## LARS / CARS workflow
+
+This project is configured for BSV tooling.
+
+- `npm run lars` launches local LARS.
+- `npm run cars` runs CARS CLI entrypoint for deployment tasks.
+
+Update `deployment-info.json` before deploying:
+
+- set a real `projectID`
+- set `CARSCloudURL`
+- pick network (`testnet`/`mainnet`) for your target
+
+## Deployment config summary
 
 - `schema`: `bsv-app`
 - `schemaVersion`: `1.0`
 - `frontend.language`: `react`
 - `frontend.sourceDirectory`: `./frontend`
 - `configs`
-  - `Local LARS` runs `frontend` with provider `LARS` on `testnet`.
-  - `production` deploys `frontend` to a CARS provider over HTTPS.
+  - `Local LARS`: provider `LARS` on `testnet`
+  - `production`: provider `CARS` over HTTPS
 
-## LARS/CARS setup
+## Design goals
 
-1. Update `deployment-info.json` for your real deployment.
-2. Replace `deployment-info.json::configs[1].projectID`.
-3. Set `CARSCloudURL` to your CARS cloud endpoint.
-4. Run `npm run install:tooling` then `npm run lars` or `npm run install:frontend` and `npm run dev` for local UI.
+1. Deterministic behavior from any input.
+2. Visual depth with realistic moon-like color science.
+3. Fast iteration loop for artists and collectors.
+4. Clear path from local preview to BRC-102 deployment.
+
+## Notes
+
+CARS build artifacts and local runtime state are ignored in Git. If you add new local deployment outputs, include them in `.gitignore` as needed.

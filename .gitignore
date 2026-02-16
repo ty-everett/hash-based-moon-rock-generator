@@ -2,24 +2,31 @@
 node_modules/
 frontend/node_modules/
 
+frontend/build/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Local envs
+# Environment
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# BSV/tooling/runtime
+# BSV / BRC-102 tooling artifacts
 .BSV
-.lars
-.cars
-.lintcache
+.lars/
+.larsrc
+.cars/
+.carsrc
+.cars-state.json
+.cars-output/
+.cars-deploy/
+.cars.lock
 
 # Build output
 /dist
@@ -27,18 +34,18 @@ pnpm-debug.log*
 /frontend/.vite
 .vite
 
+# Local tool caches
+.npm/
+.pnpm-store/
+.cache/
+
 # OS files
 .DS_Store
 Thumbs.db
 
-# IDE/editor
+# IDE / editor
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# TypeScript/JS caches
-npm-cache/
-.npm/
-pnpm-lock.yaml
 

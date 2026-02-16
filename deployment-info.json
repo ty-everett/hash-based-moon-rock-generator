@@ -15,10 +15,10 @@
       ]
     },
     {
-      "name": "production",
+      "name": "MoonRocks",
       "provider": "CARS",
-      "CARSCloudURL": "https://cars-cloud.example.com",
-      "projectID": "replace-with-project-id",
+      "CARSCloudURL": "https://cars.babbage.systems",
+      "projectID": "a268b0290a244086fb72c1ad16d148e9",
       "network": "mainnet",
       "deploy": [
         "frontend"
